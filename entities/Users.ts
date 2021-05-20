@@ -1,7 +1,8 @@
 import {
-    Entity, Column, PrimaryGeneratedColumn, ManyToMany, 
+    Entity, Column, PrimaryGeneratedColumn, OneToMany, 
     BaseEntity, JoinTable
   } from 'typeorm';
+import { Favorites } from './Favorites';
   
   // import {Planet} from "./Planet"
   @Entity()
@@ -24,6 +25,8 @@ import {
     @Column({unique: true})
     email: string;
   
+    @OneToMany(() => Favorites, favorites => favorites.id)
+    favorites: Favorites[];
     
   
     // @ManyToMany(() => Planet)
