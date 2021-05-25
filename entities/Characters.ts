@@ -1,7 +1,8 @@
 import {
     Entity, Column, PrimaryGeneratedColumn, ManyToMany, 
-    BaseEntity, JoinTable
+    BaseEntity, JoinTable, OneToMany
   } from 'typeorm';
+  import { Favorites } from './Favorites';
   
   // import {Planet} from "./Planet"
   @Entity()
@@ -39,6 +40,8 @@ import {
     @Column()
     img_url: string;
     
+    @OneToMany(() => Favorites, favorites => favorites.id)
+    favorite: Favorites[];
     // @ManyToMany(() => Planet)
     // @JoinTable()
     // planets: Planet[];
